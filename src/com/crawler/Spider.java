@@ -11,6 +11,9 @@ public class Spider {
 	
 	//search for files
 	public void search(File path){
+		
+		if(!path.exists() || !path.canRead() || path.getName().contains(".exe"))
+			return;
 		if(!path.isDirectory()){
 			ArrayList<String> temp = new ArrayList<String>();
 			//if file name already exists
@@ -35,8 +38,14 @@ public class Spider {
 		}
 	}
 	
+	//discard method
+	public void discard(){
+		file_list.clear();
+	}
+	
 	//dump file list
 	public void dump(){
 		System.out.println(file_list);
 	}
+	
 }
